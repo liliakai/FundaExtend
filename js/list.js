@@ -72,11 +72,11 @@ try{
                         try{
                             woonoppervlakte = searchResult.querySelector(woonOppervlakteContainer).innerText.replace(" m²","").replace(".","");
                             // Create the result elements
-                            let gemiddelde = document.createElement("ul");
-                            gemiddelde.setAttribute("class","search-result-kenmerken");
-                            let gemiddeldeTekst = document.createTextNode("Woonoppervlakte prijs per m²: €" + Number(Math.round(price / woonoppervlakte)).toLocaleString('nl-NL'));
+                            let gemiddelde = document.createElement("li");
+                            let gemiddeldeTekst = document.createTextNode(Number(Math.round(price / woonoppervlakte)).toLocaleString('nl-NL') + " €/m²");
                             gemiddelde.appendChild(gemiddeldeTekst);
-                            searchResult.lastElementChild.lastElementChild.lastElementChild.lastElementChild.appendChild(gemiddelde);
+
+                            searchResult.getElementsByClassName('search-result-kenmerken')[0].appendChild(gemiddelde);
                         }
                         catch (err) {
                             //console.log("Geen woonoppervlakte voor deze advertentie gevonden: " + adres);
